@@ -1,0 +1,6 @@
+node_modules
+src/Api/node_modules
+src/Api/dist
+src/Quote/node_modules
+src/Quote/dist
+.idea

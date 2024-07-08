@@ -1,0 +1,27 @@
+services:
+  api:
+    build:
+      context: src/Api
+      dockerfile: ./Dockerfile.base
+    volumes:
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json
+      - ./src/Api:/usr/src/app
+    ports:
+      - '3000:3000'
+    environment:
+      - PORT=3000
+    command: sh -c "npm install && npm run build && node dist/app"
+  quotes-service:
+    build:
+      context: src/Quote
+      dockerfile: ./Dockerfile.base
+    volumes:
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json
+      - ./src/Quote:/usr/src/app
+    ports:
+        - '3001:3001'
+    expose:
+      - '5000'
+    command: sh -c "npm install && npm run build && node dist/server"

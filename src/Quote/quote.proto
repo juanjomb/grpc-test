@@ -1,0 +1,14 @@
+syntax="proto3";
+
+service QuoteService {
+  rpc retrieve (GetQuoteRequest) returns (GetQuoteResponse) {}
+}
+
+message GetQuoteRequest {
+  string category = 1;
+}
+
+message GetQuoteResponse {
+  string quote = 1;
+  string author = 2;
+}
